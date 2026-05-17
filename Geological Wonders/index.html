@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!-- 
+    DOCTYPE tells the browser: "this is a modern HTML5 page."
+    Always put this on line 1 — it affects how the browser interprets everything below.
+-->
+
+<html lang="en">
+<!-- 
+    <html> is the root element — everything lives inside it.
+    lang="en" tells screen readers and search engines this page is in English.
+-->
+
+<head>
+    <!-- 
+        <head> holds information ABOUT the page — none of it shows up on screen.
+        Think of it as the page's settings panel.
+    -->
+    <meta charset="UTF-8">
+    <!-- UTF-8 lets the page display special characters like é, ñ, ☄️ correctly -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        This makes the page look right on phones.
+        Without it, mobile browsers zoom out and show a tiny desktop-sized page.
+    -->
+
+    <link rel="stylesheet" href="index.css">
+    <!-- 
+        This connects our CSS file.
+        href="index.css" means: look for a file called index.css in the same folder.
+        The browser downloads it and applies all the styles before showing the page.
+    -->
+
+    <title>Geological Wonders</title>
+    <!-- This text appears on the browser tab — not on the page itself -->
+</head>
+
+<body>
+    <!-- Everything inside <body> is what the user actually sees -->
+
+    <div>
+        <!-- 
+            <div> is a generic container — it groups things together.
+            On its own it does nothing visual, but you can style it with CSS
+            or use it to organize your layout.
+        -->
+        <b>The World's Greatest Geological Wonders</b>
+        <!-- <b> makes text bold. For main headings, <h1> is more correct,
+             but <b> works for quick emphasis. -->
+        <p>
+            <!-- 
+                <p> is a paragraph. It adds spacing above and below automatically.
+                This one is empty — you could add a subtitle or description here!
+            -->
+        </p>
+    </div>
+
+    <table>
+        <!-- 
+            A table is made of rows (<tr>) and cells (<th> or <td>).
+            Structure:
+                <table>
+                  <tr>          ← one row
+                    <th>...</th>  ← header cell
+                    <td>...</td>  ← data cell
+                  </tr>
+                </table>
+            
+            Every row must have the same number of cells, or the table breaks.
+        -->
+
+        <!-- ── HEADER ROW ── -->
+        <tr>
+            <!-- 
+                This first <tr> uses <th> (table header) instead of <td>.
+                <th> text is bold and centered by default — the browser knows it's a label.
+            -->
+            <th>Wonder</th>
+            <th>Location</th>
+            <th>Created By</th>
+            <th>Description</th>
+            <th>Similar Wonders</th>
+        </tr>
+
+        <!-- ── DATA ROWS ── -->
+        <!-- Each <tr> below is one wonder. They all follow the same pattern:
+             Wonder (with image) | Location | Created By | Description | Similar -->
+
+        <tr>
+            <td class="wonder-title">
+                <!-- 
+                    class="wonder-title" links this cell to the .wonder-title
+                    rule in index.css. That's what centers the text and image.
+                -->
+                <b>Island of Santorini</b>
+                <img src="images/santorini.jpg">
+                <!-- 
+                    <img> is a self-closing tag — no </img> needed.
+                    src= is the path to the image file.
+                    Good practice: always add alt="description" for accessibility,
+                    e.g.  alt="Aerial view of Santorini island"
+                -->
+            </td>
+            <td>Santorini, Greece</td>
+            <td>Volcanic Erruptions</td>
+            <!-- 
+                Spot the typo above? "Erruptions" should be "Eruptions".
+                HTML won't catch spelling mistakes — always proofread your content!
+            -->
+            <td>
+                Repeated volcanic explosions created this softly rested island 
+                on the east of the Mediterranean Sea, which last erupted in the 
+                1600s BC. The inner island formed after magma fell back into the 
+                earths lower chambers.
+            </td>
+            <td>Crater Lake (USA), Aeolian Islands (Italy)</td>
+        </tr>
+
+        <tr>
+            <td class="wonder-title">
+                <b>Grand Canyon</b>
+                <img src="images/grandcanyon.webp">
+            </td>
+            <td>Arizona, USA</td>
+            <td>River Erosion</td>
+            <td>
+                Carved by the Colorado River over millions of years, this massive 
+                canyon stretches 277 miles long and up to 18 miles wide. The exposed 
+                rock layers reveal nearly 2 billion years of Earth's geological history.
+            </td>
+            <td>Fish River Canyon (Namibia), Copper Canyon (Mexico)</td>
+        </tr>
+
+        <tr>
+            <td class="wonder-title">
+                <b>Great Barrier Reef</b>
+                <img src="images/greatbarrierreef.webp">
+            </td>
+            <td>Queensland, Australia</td>
+            <td>Coral Formation</td>
+            <td>
+                The world's largest coral reef system composed of over 2,900 individual 
+                reefs and 900 islands. Built by billions of tiny coral polyps over 
+                thousands of years, it spans over 1,400 miles.
+            </td>
+            <td>Belize Barrier Reef, Red Sea Coral Reef</td>
+        </tr>
+
+        <tr>
+            <td class="wonder-title">
+                <b>Mount Everest</b>
+                <img src="images/everest.webp">
+            </td>
+            <td>Nepal/Tibet Border</td>
+            <td>Tectonic Plate Collision</td>
+            <td>
+                Earth's highest mountain at 29,032 feet above sea level, formed by 
+                the collision of the Indian and Eurasian tectonic plates. The mountain 
+                continues to grow approximately 4mm per year.
+            </td>
+            <td>K2 (Pakistan), Kangchenjunga (Nepal)</td>
+        </tr>
+
+        <tr>
+            <td class="wonder-title">
+                <b>Giant's Causeway</b>
+                <img src="images/giantscauseway.webp">
+            </td>
+            <td>County Antrim, Northern Ireland</td>
+            <td>Volcanic Basalt Columns</td>
+            <td>
+                An area of about 40,000 interlocking basalt columns formed by ancient 
+                volcanic eruptions. The hexagonal columns were created when molten lava 
+                cooled rapidly and contracted, forming this unique geometric pattern.
+            </td>
+            <td>Devil's Postpile (USA), Fingal's Cave (Scotland)</td>
+        </tr>
+
+        <tr>
+            <td class="wonder-title">
+                <b>Paricutin Volcano</b>
+                <img src="images/paricutin.webp">
+            </td>
+            <td>Michoacán, Mexico</td>
+            <td>Volcanic Activity</td>
+            <td>
+                A cinder cone volcano that was born in a farmer's cornfield in 1943. 
+                It grew to 1,391 feet within one year and remained active until 1952, 
+                providing scientists a rare opportunity to observe a volcano's birth.
+            </td>
+            <td>Surtsey (Iceland), Mount Vesuvius (Italy)</td>
+        </tr>
+
+        <tr>
+            <td class="wonder-title">
+                <b>Victoria Falls</b>
+                <img src="images/victoriafalls.webp">
+            </td>
+            <td>Zambia/Zimbabwe Border</td>
+            <td>River Erosion</td>
+            <td>
+                Known locally as "The Smoke That Thunders," this massive waterfall is 
+                over a mile wide and 355 feet high. The Zambezi River plunges over a 
+                cliff into a narrow gorge carved through basalt rock.
+            </td>
+            <td>Niagara Falls (USA/Canada), Iguazu Falls (Argentina/Brazil)</td>
+        </tr>
+
+        <tr>
+            <td class="wonder-title">
+                <b>Marble Caves</b>
+                <img src="images/marblecaves.webp">
+            </td>
+            <td>Patagonia, Chile</td>
+            <td>Water Erosion</td>
+            <td>
+                A network of stunning blue-marbled caves carved into calcium carbonate 
+                formations over 6,000 years by the waves of General Carrera Lake. The 
+                swirling patterns reflect the lake's azure waters.
+            </td>
+            <td>Apostle Islands Sea Caves (USA), Blue Grotto (Italy)</td>
+        </tr>
+
+        <tr>
+            <td class="wonder-title">
+                <b>Lonar Crater Lake</b>
+                <img src="images/lonarlake.webp">
+            </td>
+            <td>Maharashtra, India</td>
+            <td>Meteor Impact</td>
+            <td>
+                Created by a meteorite impact around 50,000 years ago, this is one of 
+                only four known hyper-velocity impact craters in basaltic rock on Earth. 
+                The saline and alkaline lake has unique microorganisms found nowhere else.
+            </td>
+            <td>Meteor Crater (USA), Barringer Crater (USA)</td>
+        </tr>
+
+    </table>
+    <!-- 
+        Challenge ideas to try:
+        - Add a <caption> tag right after <table> to give it a title
+        - Add a 6th column for "Year Discovered" and fill it in
+        - Wrap the data rows in <tbody> and the header in <thead> — better structure!
+        - Add alt="" text to every <img>
+        - Fix the typo in "Erruptions" 😉
+    -->
+
+</body>
+</html>

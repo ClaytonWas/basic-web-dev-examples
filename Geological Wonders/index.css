@@ -1,0 +1,147 @@
+/* ============================================================
+   index.css — Stylesheet for Geological Wonders
+   
+   A stylesheet controls how your HTML *looks*.
+   HTML = the content, CSS = the style.
+   This file is linked in index.html using:
+       <link rel="stylesheet" href="index.css">
+   ============================================================ */
+
+
+/* Page background color for a pleasant look */
+/* 
+   The "body" selector targets the whole page.
+   Background colors can be written as:
+     - Color names:  background: red;
+     - Hex codes:    background: #c3baca;  ← what we're using here
+     - RGB:          background: rgb(195, 186, 202);
+*/
+body {
+    background: #c3baca;
+}
+
+
+/* Table layout and appearance */
+/*
+   "table" targets every <table> element on the page.
+   border-collapse: collapse → removes the double-border gap
+   that appears between cells by default. Try removing it to see!
+*/
+table {
+    border-collapse: collapse; /* Remove gaps between borders */
+    width: 90%;                /* Table takes up 90% of the page width */
+    margin: 2rem auto;         /* "auto" on left/right centers the table */
+    background: #fff;          /* White background behind the table */
+}
+
+
+/* Table header and cell styling */
+/*
+   th = table header cell  (the top row labels)
+   td = table data cell    (all the content rows)
+   
+   Using "th, td" with a comma means: apply these styles to BOTH.
+   This is called a "grouped selector."
+*/
+th, td {
+    border: 1px solid #ccc; /* Light gray borders around every cell */
+    padding: 0.75rem;        /* Inner breathing room (like a margin, but inside) */
+    font-size: 1rem;         /* 1rem = the browser's default font size (~16px) */
+    color: #222;             /* Near-black text */
+    background: none;        /* No background — lets the table's white show through */
+}
+
+
+/* Header row styling */
+/*
+   Only targets <th> elements (not <td>).
+   This overrides the shared styles above just for headers.
+   CSS reads top-to-bottom — later rules with the same selector win.
+*/
+th {
+    background: #eee;    /* Light gray to visually separate the header */
+    font-weight: bold;   /* Makes text thicker/heavier */
+}
+
+
+/* Alternate row coloring for readability */
+/*
+   :nth-child(even) is a "pseudo-class" — it matches every
+   2nd, 4th, 6th... <tr> inside its parent.
+   This "zebra striping" makes long tables easier to scan.
+   Try changing "even" to "odd" to see it shift!
+*/
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+/* Row hover effect */
+/*
+   :hover applies styles only when the mouse is over an element.
+   This gives users a visual cue about which row they're on.
+   Note: this also applies to the header row — can you fix that?
+   Hint: try "tbody tr:hover" instead of "tr:hover"
+*/
+tr:hover {
+    background-color: #eaeaea;
+}
+
+
+/* Image styling inside table */
+/*
+   Without max-width, images use their full original size.
+   max-width: 200px means "never wider than 200px, but can be smaller."
+   
+   Try: border-radius: 8px; to add rounded corners to the images!
+*/
+img {
+    max-width: 200px;
+    border-radius: 0;       /* 0 = sharp corners (default) */
+    border: 1px solid #ccc;
+    margin-top: 0.5rem;
+}
+
+
+/* Wonder title cell styling */
+/*
+   This targets elements with class="wonder-title" in the HTML.
+   Classes let you style specific elements without affecting all
+   <td> tags — more precise than just using "td".
+*/
+.wonder-title {
+    text-align: center; /* Centers both the text and the image */
+    font-weight: bold;
+    color: #222;
+}
+
+
+/* Wonder name above image */
+/*
+   .wonder-title b targets a <b> tag that is INSIDE .wonder-title.
+   This is called a "descendant selector."
+   display: block forces the name onto its own line
+   (by default, <b> is inline, meaning it sits beside other content).
+*/
+.wonder-title b {
+    display: block;       /* Makes the name sit on its own line */
+    margin-bottom: 0.5rem;
+}
+
+
+/* Make Description column narrower */
+/*
+   :nth-child(4) targets the 4th <td> or <th> in each row —
+   which happens to be our Description column.
+   This is another way to style specific columns without adding classes.
+   
+   white-space: normal  → allow text to wrap (default for most elements)
+   word-break: break-word → break a long word if it overflows the box
+*/
+td:nth-child(4), th:nth-child(4) {
+    max-width: 10vw;       /* vw = viewport width — 10% of the screen width */
+    width: 10vw;
+    min-width: 80px;       /* Never shrinks below 80px even on small screens */
+    white-space: normal;
+    word-break: break-word;
+}

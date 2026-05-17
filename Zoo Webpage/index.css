@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c8d4eb;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #0c3388;
+}
+
+h2 {
+    color: #2927ac;
+    margin-bottom: 0;
+}
+
+h3 {
+    color: #034ef0;
+}
+
+h4 {
+    color: #0d0d35;
+    margin-top: 0;
+}
+
+img {
+    width: 400px;
+    border-radius: 2rem;
+}
+
+.animal-container {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #8da8dd;
+    border-radius: 2rem;
+}
+
+.animal-container p, img {
+    padding-left: 1rem;
+}
