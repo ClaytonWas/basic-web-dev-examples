@@ -4,7 +4,7 @@ A few finished web pages for teaching kids the basics of HTML, CSS, and JavaScri
 
 ## The Examples
 
-- **[Geological Wonders](./Geological%20Wonders/)** — A picture page about famous natural landmarks. Pure HTML and CSS, heavily commented to explain what every tag does. Good first lesson: no JavaScript yet.
+- **[Geological Wonders](./Geological%20Wonders/)** — A picture page about famous natural landmarks. Pure HTML and CSS, heavily commented to explain what every tag does. Good first lesson: no JavaScript yet. You can also make this a lesson about famous world wonders.
 
 - **[Zoo Webpage](./Zoo%20Webpage/)** — A zoo info page with a section for each animal. Builds on HTML/CSS and adds a little interactivity with JavaScript.
 
