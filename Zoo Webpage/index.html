@@ -11,6 +11,18 @@
         <h1>Best Brains Zoo</h1>
         <h3>Grand Opening</h3>
         <p>Welcome to the Best Brains Zoo!</p>
+
+        <!-- These two buttons are our interactive lesson -->
+        <div class="controls">
+            <!-- Button 1: shows a random fact from a list (array) -->
+            <button id="randomFactBtn">🎲 Show me a random animal fact!</button>
+
+            <!-- Button 2: switches the page between day and night -->
+            <button id="themeBtn">🌙 Night Mode</button>
+        </div>
+
+        <!-- The random fact will appear in here -->
+        <p id="randomFactDisplay"></p>
     </div>
 
     <div class="animal-container">  
@@ -71,5 +83,7 @@
             <li>Moths</li>
         </ul>
     </div>
+
+    <script src="zoo-interactive.js"></script>
 </body>
 </html>

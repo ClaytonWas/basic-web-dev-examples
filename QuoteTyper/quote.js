@@ -1,104 +1,45 @@
 var quotes = [
-    //{
-        //text:"",
-        //author:"",
-        //book:""
-    //},
     {
-        text: "Sometimes you just jump and hope it's not a cliff.",
-        author: "Casey McQuiston",
-        book: "Red, White, and Royal Blue"
+        text: "All the world's a stage, and all the men and women merely players.",
+        author: "William Shakespeare",
+        book: "As You Like It"
     },
     {
-        text:"Love is patient, love is kind, love means slowly losing your mind.",
-        author:"Lynn Painter",
-        book:"Better Than the Movies"
+        text: "I am not afraid of storms, for I am learning how to sail my ship.",
+        author: "Louisa May Alcott",
+        book: "Little Women"
     },
     {
-        text:"With great power... comes great need to take a nap. Wake me up later.",
-        author:"Rick Riordan",
-        book:"Last Olympian"
+        text: "To die will be an awfully big adventure.",
+        author: "J.M. Barrie",
+        book: "Peter Pan"
     },
     {
-        text:"Every good story needs a villain. But the best villains are the ones you secretly like.",
-        author:"Stephanie Garber",
-        book:"Legendary"
+        text: "For the strength of the Pack is the Wolf, and the strength of the Wolf is the Pack.",
+        author: "Rudyard Kipling",
+        book: "The Jungle Book"
     },
     {
-        text:"I solemnly swear that I am up to no good.",
-        author:"J.K Rowling",
-        book:"Harry Potter and the Prisoner of Askaban"
+        text: "The secret of getting ahead is getting started.",
+        author: "Mark Twain",
+        book: ""
     },
     {
-        text:"If yes is no and once is never, then how many sides does a triangle have?",
-        author:"Jennifer Lynn Barnes",
-        book:"The Inheritance Games"
+        text: "Go confidently in the direction of your dreams. Live the life you have imagined.",
+        author: "Henry David Thoreau",
+        book: ""
     },
     {
-        text:"Sometimes mortals are not aware of the threads that bind them. You could both be wrong about the first time you met, and yet the two of you have orbited each other for so long, like heavenly bodies in the sky.",
-        author:"Rick Riordan and Mark Oshiro",
-        book:"The Sun and the Star"
+        text: "It's no use going back to yesterday, because I was a different person then.",
+        author: "Lewis Carroll",
+        book: "Alice's Adventures in Wonderland"
     },
     {
-        text:"You do not know how fast you have been running, how hard you have been working, how truly exhausted you are, until somewhat stands behind you and says, It’s OK, you can fall down now. I’ll catch you.",
-        author:"Taylor Jenkins Reid",
-        book:"The Seven Husbands of Evelyn Hugo"
+        text: "The world is full of obvious things which nobody by any chance ever observes.",
+        author: "Arthur Conan Doyle",
+        book: "The Hound of the Baskervilles"
     },
-    {
-        text:"Now that I look back, I don't know why I was so stressed about it all this time. Funny how sometimes you worry a lot about something and it turns out to be nothing",
-        author:" R.J. Palacio",
-        book:"Wonder"
-    },
-    {
-        text:"It was an annoying name to have. People tended to spell in Mangus, rhymes with Angus. I always corrected them: No, it's Magnus, rhymes with swagness. At which point they would stare at me blankly",
-        author:"Rick Riordan",
-        book:"The Sword of Summer"
-    },
-    {
-        text:"Sometimes i think if nobody spoke to me, i'd never speak again",
-        author:"Alice Oseman",
-        book:"Radio Silence"
-    },
-    {
-        text:"She's happy with who she is. Maybe it's not the heteronormative dream that she grew up wishing for, but... knowing who you are and loving yourself is so much better than that, I think",
-        author:"Alice Oseman",
-        book:"Loveless"
-    },
-    {
-        text:"Never attempt to apply logic to madness, for there is none; it is the nature of madness to be illogical.",
-        author:"Navessa Allen",
-        book:"Scandal"
-    },
-    {
-        text:"I didn’t want him morally grey. I wanted someone with a soul as black as night. Someone who would burn the world down for me and not lose a single minute of sleep over it",
-        author:"Navessa Allen",
-        book:"Lights Out"
-    },
-    {
-        text:"The moon is a loyal companion. It never leaves. It’s always there, watching, steadfast, knowing us in our light and dark moments, changing forever just as we do. Every day it’s a different version of itself. Sometimes weak and wan, sometimes strong and full of light. The moon understands what it means to be human. Uncertain. Alone. Cratered by imperfections",
-        author:"Tahereh Mafi",
-        book:"Shatter Me"
-    },
-    {
-        text:"It's not the face, but the expressions on it. It's not the voice, but what you say. It's not how you look in that body, but the thing you do with it. You are beautiful.",
-        author:"Stephenie Meyer",
-        book:"The Host"
-    },
-    {
-        text:"For The Lonely, The Daydreamers, The ones who find their friends between the pages of books— YOU MATTER, and your happy ending WILL come. Sometimes the wait is just longer in real life than in fiction.",
-        author:"Lynn Painter",
-        book:"The Do-Over"
-    },
-    {
-        text:"He teased relentlessly and was the funniest person I’d ever met, yet I knew for a fact that he listened to Conan Gray and Gracie Abrams on repeat all the time (I had his Spotify password).",
-        author:"Lynn Painter",
-        book:"Betting on You"
-    },
-    {
-        text:"Karma was supposed to be a cat, dammit, not this.",
-        author:"Lynn Painter",
-        book:"Betting on You"
-    },
+
 ]
 // Code for creating a random number betweeen 0 - quotes.length
 //console.log(Math.floor(quotes.length*Math.random()))
@@ -114,17 +55,60 @@ var text_element = document.getElementById("quote_text")
 var author_element = document.getElementById("author_text")
 var book_element = document.getElementById("book_text")
 
+// This is the quote you are supposed to type right now.
+// We keep it in its own variable so the checker knows the right answer.
+var active_quote = quotes[random_number].text
+
 //Code for previous variables
-text_element.innerText = quotes[random_number].text
+text_element.innerText = active_quote
 author_element.innerText = quotes[random_number].author
 book_element.innerText = quotes[random_number].book
 
 function refreshquotes() {
-    var random_number = (Math.floor(quotes.length*Math.random()))
-    text_element.innerText = quotes[random_number].text
+    // Pick a new random quote
+    random_number = (Math.floor(quotes.length*Math.random()))
+
+    // Remember the new quote so the checker uses the new one
+    active_quote = quotes[random_number].text
+
+    text_element.innerText = active_quote
     author_element.innerText = quotes[random_number].author
     book_element.innerText = quotes[random_number].book
+
+    // Empty the typing box and the message so we start fresh
+    type_box.value = ""
+    check_message.innerText = ""
 }
 
 var button = document.getElementById("refresh")
 button.addEventListener("click", refreshquotes)
+
+
+// ------- Typing checker -------
+
+// Get the typing box and the message line from the HTML
+var type_box = document.getElementById("type_box")
+var check_message = document.getElementById("check_message")
+
+// This function runs every time you type a letter in the box
+function checkTyping() {
+    // What you have typed so far
+    var typed = type_box.value
+
+    if (typed === active_quote) {
+        // You typed the WHOLE quote correctly!
+        check_message.innerText = "Great job! You typed it perfectly! 🎉"
+        check_message.style.color = "green"
+    } else if (active_quote.startsWith(typed)) {
+        // So far so good, you just are not done yet
+        check_message.innerText = "Keep going, you are doing great!"
+        check_message.style.color = "blue"
+    } else {
+        // A letter does not match the quote
+        check_message.innerText = "Oops! Check your spelling and try again."
+        check_message.style.color = "red"
+    }
+}
+
+// Run checkTyping every time a key is typed in the box
+type_box.addEventListener("input", checkTyping)
