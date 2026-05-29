@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     index.html — Landing page for the Basic Web Dev Examples
+
+     This is the front door of the site. It links to each example.
+     It exists so the page works when hosted (e.g. GitHub Pages),
+     where opening the site root needs an index.html to show.
+
+     Each link points straight at that example's HTML file.
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Web Dev Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c8d4eb;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1rem;
+            color: #0d0d35;
+        }
+        h1 { color: #0c3388; }
+        p  { color: #0d0d35; }
+
+        /* Each example is a card you can click */
+        a.example {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background-color: #8da8dd;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        a.example:hover { background-color: #6f90d0; }
+        a.example .title { font-weight: bold; font-size: 1.2rem; color: #0c3388; }
+        a.example .desc  { margin-top: 0.25rem; }
+        .step { color: #2927ac; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Basic Web Dev Examples</h1>
+    <p>Small, finished web pages for teaching the basics of HTML, CSS, and JavaScript. Click an example to open it. They build on each other, so this is a good order to teach them in.</p>
+
+    <a class="example" href="Geological%20Wonders/index.html">
+        <div class="title"><span class="step">1.</span> Geological Wonders</div>
+        <div class="desc">HTML tables and CSS styling (no JavaScript yet).</div>
+    </a>
+
+    <a class="example" href="Zoo%20Webpage/index.html">
+        <div class="title"><span class="step">2.</span> Zoo Webpage</div>
+        <div class="desc">First JavaScript: a random-fact button and a day/night toggle.</div>
+    </a>
+
+    <a class="example" href="Quote%20Typer/index.html">
+        <div class="title"><span class="step">3.</span> Quote Typer</div>
+        <div class="desc">Reacting to typing, with live correct/incorrect feedback.</div>
+    </a>
+
+    <a class="example" href="Calculator/calculator.html">
+        <div class="title"><span class="step">4.</span> Calculator</div>
+        <div class="desc">Reading inputs, a switch statement, and handling bad input.</div>
+    </a>
+
+    <a class="example" href="Choose%20Your%20Own%20Adventure/adventure.html">
+        <div class="title"><span class="step">5.</span> Choose Your Own Adventure</div>
+        <div class="desc">Building a whole branching page from code.</div>
+    </a>
+
+    <p>Each example folder has its own README with step-by-step teaching notes.</p>
+</body>
+</html>

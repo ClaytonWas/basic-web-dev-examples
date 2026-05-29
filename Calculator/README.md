@@ -3,7 +3,7 @@
 A simple web-based calculator that performs basic arithmetic on two numbers.
 
 **Concepts:** reading form inputs, `parseFloat`, `switch` statements, validation with `isNaN`, guarding edge cases (divide-by-zero), writing results back to the DOM
-**Builds on:** [QuoteTyper](../QuoteTyper/) — more event handling, plus branching logic and input validation.
+**Builds on:** [Quote Typer](../Quote%20Typer/) — more event handling, plus branching logic and input validation.
 
 ## Files
 
