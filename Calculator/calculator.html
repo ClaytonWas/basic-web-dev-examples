@@ -1,12 +1,34 @@
+<!-- ============================================================
+     calculator.html — The calculator page (what the user sees)
+
+     HTML is the CONTENT of the page.
+     The behaviour (the actual maths) lives in calculator.js,
+     which is linked at the very bottom of this file.
+     ============================================================ -->
+
+<!-- <input> makes a typing box. id="first" is a name so the JavaScript
+     can find this exact box. placeholder is the grey hint text inside it. -->
 <input id="first" placeholder="Enter first number">
+
+<!-- <select> is a dropdown menu. Each <option> is one choice in it.
+     value="..." is what the JavaScript reads when this option is picked. -->
 <select id="operator">
     <option value="+">+</option>
     <option value="-">-</option>
     <option value="*">*</option>
     <option value="/">/</option>
 </select>
+
+<!-- The second number box -->
 <input id="second" placeholder="Enter second number">
+
+<!-- The button the user clicks to calculate. calculator.js listens for
+     a click on this exact id ("calculate"). -->
 <button id="calculate">=</button>
+
+<!-- An empty paragraph. The answer gets written in here by the JavaScript. -->
 <p id="result"></p>
 
+<!-- Load the behaviour LAST, after the elements above exist,
+     so the script can find them. -->
 <script src="calculator.js"></script>

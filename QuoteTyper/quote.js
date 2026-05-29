@@ -1,3 +1,17 @@
+// ============================================================
+// quote.js — The data and behaviour for the Quote Typer
+//
+// JavaScript makes the page DO things.
+// This file holds the list of quotes AND the logic that shows one,
+// swaps it on a button click, and checks what you type.
+// It is linked at the bottom of index.html using:
+//     <script src="quote.js"></script>
+// ============================================================
+
+
+// An ARRAY is a numbered list (it starts at position 0).
+// Each item here is an OBJECT — a bundle of related facts wrapped in { }.
+// Every quote has three labelled parts: text, author, and book.
 var quotes = [
     {
         text: "All the world's a stage, and all the men and women merely players.",
@@ -41,16 +55,18 @@ var quotes = [
     },
 
 ]
-// Code for creating a random number betweeen 0 - quotes.length
-//console.log(Math.floor(quotes.length*Math.random()))
 
-//This is the variable for the pervious code
+// Pick a random starting quote.
+// Math.random() gives a decimal between 0 and 1. Multiplying by how many
+// quotes there are, then rounding down with Math.floor(), gives a whole
+// number we can use as a position in the array (0, 1, 2, ...).
 var random_number = (Math.floor(quotes.length*Math.random()))
 
-//
+// console.log() prints to the browser's developer Console (press F12 to see it).
+// It doesn't change the page — it's a handy way to peek at a value while building.
 console.log(quotes[0])
 
-//Variables to reference the elements in the HTML file
+// Find the three paragraphs in the HTML so we can write into them.
 var text_element = document.getElementById("quote_text")
 var author_element = document.getElementById("author_text")
 var book_element = document.getElementById("book_text")
@@ -59,11 +75,12 @@ var book_element = document.getElementById("book_text")
 // We keep it in its own variable so the checker knows the right answer.
 var active_quote = quotes[random_number].text
 
-//Code for previous variables
+// Show the first quote: write each part into its paragraph.
 text_element.innerText = active_quote
 author_element.innerText = quotes[random_number].author
 book_element.innerText = quotes[random_number].book
 
+// Swap in a fresh random quote (runs when the refresh button is clicked).
 function refreshquotes() {
     // Pick a new random quote
     random_number = (Math.floor(quotes.length*Math.random()))
@@ -80,6 +97,7 @@ function refreshquotes() {
     check_message.innerText = ""
 }
 
+// Find the refresh button and run refreshquotes() whenever it's clicked.
 var button = document.getElementById("refresh")
 button.addEventListener("click", refreshquotes)
 
@@ -100,7 +118,7 @@ function checkTyping() {
         check_message.innerText = "Great job! You typed it perfectly! 🎉"
         check_message.style.color = "green"
     } else if (active_quote.startsWith(typed)) {
-        // So far so good, you just are not done yet
+        // So far so good — what you've typed matches the start, just not finished yet.
         check_message.innerText = "Keep going, you are doing great!"
         check_message.style.color = "blue"
     } else {
@@ -110,5 +128,14 @@ function checkTyping() {
     }
 }
 
-// Run checkTyping every time a key is typed in the box
+// "input" fires on every keystroke, so the message updates live as you type.
 type_box.addEventListener("input", checkTyping)
+
+
+// ============================================================
+// Challenge ideas to try:
+// - Add your own quotes to the array (movies, songs, anything).
+// - Show a timer or count how many quotes the user has typed correctly.
+// - Ignore upper/lower case so "the" and "The" both count as correct.
+// - Colour each letter green/red as you type it (a bigger challenge!).
+// ============================================================

@@ -1,24 +1,36 @@
 <!DOCTYPE html>
+<!-- ============================================================
+     index.html — The Quote Typer page (what the user sees)
+
+     HTML is the CONTENT. The styling is in index.css and the
+     behaviour (showing/checking quotes) is in quote.js — both are
+     linked into this file.
+     ============================================================ -->
 <html lang="en">
 <head>
+    <!-- <head> holds settings about the page; none of it shows on screen. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link   rel="stylesheet"    href="index.css">
+    <link rel="stylesheet" href="index.css"> <!-- connect the stylesheet -->
 </head>
 <body>
-    <p id="quote_text"></p>
-    <p id="author_text"></p>
-    <p id="book_text"></p>
+    <!-- These three paragraphs start EMPTY. quote.js fills them in. -->
+    <p id="quote_text"></p>     <!-- the quote -->
+    <p id="author_text"></p>    <!-- who said it -->
+    <p id="book_text"></p>      <!-- which book it's from -->
+
+    <!-- Clicking this button runs refreshquotes() in quote.js. -->
     <button id="refresh">Click me to refresh the quotes!</button>
 
     <!-- This is the box where you type the quote -->
     <p>Type the quote here:</p>
     <input id="type_box" type="text" size="60">
 
-    <!-- This message tells you if you got it right -->
+    <!-- This message tells you if you got it right (filled by quote.js) -->
     <p id="check_message"></p>
 
+    <!-- Load the behaviour last, after the elements above exist. -->
     <script src="quote.js"></script>
 </body>
 </html>

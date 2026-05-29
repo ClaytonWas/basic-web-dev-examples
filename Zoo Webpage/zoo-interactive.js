@@ -1,11 +1,13 @@
-// ============================================
-// ZOO INTERACTIVE JAVASCRIPT
-// Educational JavaScript for Ages 11-14
-// ============================================
-// In this lesson we will build TWO interactive buttons:
+// ============================================================
+// zoo-interactive.js — The behaviour for the Zoo page
+//
+// JavaScript makes the page DO things.
+// In this lesson we build TWO interactive buttons:
 //   1. A button that shows a RANDOM animal fact
 //   2. A button that switches the page between DAY and NIGHT
-// ============================================
+// It is linked at the bottom of index.html using:
+//     <script src="zoo-interactive.js"></script>
+// ============================================================
 
 
 // ============================================

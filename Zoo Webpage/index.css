@@ -1,3 +1,15 @@
+/* ============================================================
+   index.css — Stylesheet for the Zoo page
+
+   A stylesheet controls how the page *looks*.
+   HTML = the content, CSS = the style.
+   This file is linked in index.html using:
+       <link rel="stylesheet" href="index.css">
+
+   The "body.night-mode" rules near the bottom are switched ON and
+   OFF by zoo-interactive.js when you click the Night Mode button.
+   ============================================================ */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #c8d4eb;
