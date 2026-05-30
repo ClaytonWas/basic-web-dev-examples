@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     css-only.html — Mad Libs with NO JavaScript at all!
+
+     The original index.html reads the boxes with madlibs.js and
+     BUILDS a sentence. This version skips JavaScript entirely with
+     one trick: the input boxes live INSIDE the story sentence, so
+     whatever you type appears right in context as you go.
+
+     Everything you see — the colours, the dashed blanks, the
+     "turns green when filled" feedback — is plain CSS.
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mad Libs — CSS Only</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 640px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        h1 { color: #4a3f9e; }
+
+        /* The story text the blanks are embedded in */
+        .story {
+            font-size: 1.3rem;
+            line-height: 2.4;
+        }
+
+        /* Each fill-in-the-blank box, styled to look like a written-in word */
+        .blank {
+            font: inherit;
+            font-weight: bold;
+            color: #764ba2;
+            text-align: center;
+            border: none;
+            border-bottom: 2px dashed #764ba2;
+            background: transparent;
+            min-width: 110px;
+            padding: 0 6px;
+        }
+
+        /* The faint hint word shown before you type */
+        .blank::placeholder {
+            color: #bbb;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        /* Highlight the box you're currently typing in */
+        .blank:focus {
+            outline: none;
+            border-bottom-style: solid;
+            background: #f3effc;
+        }
+
+        /* :not(:placeholder-shown) is true once a box has text in it,
+           so a filled-in blank turns solid green — pure-CSS "validation" */
+        .blank:not(:placeholder-shown) {
+            color: #2e7d32;
+            border-bottom: 2px solid #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <h1>Silly Story Maker (CSS Only)</h1>
+    <p>No button, no JavaScript — just type into the blanks and the story fills itself in!</p>
+
+    <!-- The inputs are part of the sentence itself. That's the whole trick. -->
+    <p class="story">
+        One day, a
+        <input class="blank" placeholder="adjective">
+        <input class="blank" placeholder="animal">
+        decided to
+        <input class="blank" placeholder="verb">
+        all the way to
+        <input class="blank" placeholder="place">.
+        It met
+        <input class="blank" placeholder="number">
+        friendly robots and shouted
+        "<input class="blank" placeholder="exclamation">!"
+        The end.
+    </p>
+
+    <p style="margin-top:30px;color:#6a5acd;">
+        💡 Notice the blanks turn <strong style="color:#2e7d32">green</strong> once you fill them in —
+        that's the <code>:not(:placeholder-shown)</code> CSS selector, no script needed.
+    </p>
+</body>
+</html>

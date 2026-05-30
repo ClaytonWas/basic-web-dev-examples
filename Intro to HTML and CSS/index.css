@@ -1,0 +1,36 @@
+/* ============================================================
+   index.css — The colours and fonts for the page
+
+   HTML is the stuff on the page. CSS makes it look nice.
+   Try changing a colour below, save, then refresh your browser!
+   ============================================================ */
+
+/* "body" means the whole page. */
+body {
+    font-family: Arial, sans-serif;   /* the font for all the words */
+    background-color: #c8d4eb;         /* the page's background colour */
+    color: #0d0d35;                    /* the colour of the words */
+    max-width: 700px;                  /* keeps the page a nice width */
+    margin: 0 auto;                    /* puts the page in the middle */
+    padding: 1rem;                     /* space around the edges */
+}
+
+/* "h1" means the big title. Let's make it a nice blue. */
+h1 { color: #0c3388; }
+
+/* "h2" means the smaller headings. */
+h2 { color: #2927ac; }
+
+/* "img" means the picture. This rounds its corners. */
+img {
+    max-width: 100%;          /* never wider than the page */
+    border-radius: 1rem;      /* rounded corners */
+}
+
+
+/* ============================================================
+   Try this:
+   - Change the background-color to your favourite colour.
+   - Add more things to the list in index.html.
+   - Change the name and age to be about you!
+   ============================================================ */

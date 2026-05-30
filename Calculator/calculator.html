@@ -1,34 +1,89 @@
+<!DOCTYPE html>
 <!-- ============================================================
      calculator.html — The calculator page (what the user sees)
 
      HTML is the CONTENT of the page.
-     The behaviour (the actual maths) lives in calculator.js,
-     which is linked at the very bottom of this file.
+     The colours live in the <style> block below (in theme with the
+     rest of the class), and the behaviour (the actual maths) lives
+     in calculator.js, linked at the very bottom of this file.
      ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        /* The shared class theme: soft blue page, dark-blue headings. */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c8d4eb;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1rem;
+            color: #0d0d35;
+        }
 
-<!-- <input> makes a typing box. id="first" is a name so the JavaScript
-     can find this exact box. placeholder is the grey hint text inside it. -->
-<input id="first" placeholder="Enter first number">
+        h1 { color: #0c3388; }
 
-<!-- <select> is a dropdown menu. Each <option> is one choice in it.
-     value="..." is what the JavaScript reads when this option is picked. -->
-<select id="operator">
-    <option value="+">+</option>
-    <option value="-">-</option>
-    <option value="*">*</option>
-    <option value="/">/</option>
-</select>
+        /* The number boxes and the operator dropdown. */
+        input, select {
+            font-size: 1rem;
+            padding: 0.3rem;
+            margin: 0.3rem 0;
+        }
 
-<!-- The second number box -->
-<input id="second" placeholder="Enter second number">
+        /* The "=" button, matching the buttons in the other examples. */
+        button {
+            font-size: 1rem;
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 1rem;
+            background-color: #0c3388;
+            color: white;
+            cursor: pointer;
+            margin: 0.3rem 0;
+        }
 
-<!-- The button the user clicks to calculate. calculator.js listens for
-     a click on this exact id ("calculate"). -->
-<button id="calculate">=</button>
+        button:hover { background-color: #034ef0; }
 
-<!-- An empty paragraph. The answer gets written in here by the JavaScript. -->
-<p id="result"></p>
+        /* The answer line, made big and bold so it stands out. */
+        #result {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2927ac;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <p>Enter two numbers, pick an operation, and click <strong>=</strong>.</p>
 
-<!-- Load the behaviour LAST, after the elements above exist,
-     so the script can find them. -->
-<script src="calculator.js"></script>
+    <!-- <input> makes a typing box. id="first" is a name so the JavaScript
+         can find this exact box. placeholder is the grey hint text inside it. -->
+    <input id="first" placeholder="Enter first number">
+
+    <!-- <select> is a dropdown menu. Each <option> is one choice in it.
+         value="..." is what the JavaScript reads when this option is picked. -->
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+
+    <!-- The second number box -->
+    <input id="second" placeholder="Enter second number">
+
+    <!-- The button the user clicks to calculate. calculator.js listens for
+         a click on this exact id ("calculate"). -->
+    <button id="calculate">=</button>
+
+    <!-- An empty paragraph. The answer gets written in here by the JavaScript. -->
+    <p id="result"></p>
+
+    <!-- Load the behaviour LAST, after the elements above exist,
+         so the script can find them. -->
+    <script src="calculator.js"></script>
+</body>
+</html>

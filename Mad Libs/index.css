@@ -1,5 +1,5 @@
 /* ============================================================
-   index.css — Stylesheet for the Quote Typing Practice page
+   index.css — Stylesheet for the Mad Libs page
 
    A stylesheet controls how the page *looks*.
    HTML = the content, CSS = the style.
@@ -13,23 +13,23 @@ body {
     max-width: 700px;
     margin: 0 auto;
     padding: 1rem;
-    color: #0d0d35;
 }
 
 h1 { color: #0c3388; }
 
-/* The quote itself — the biggest, boldest text on the page. */
-#quote_text {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #2927ac;
+/* Put each label on its own line with a little breathing room.
+   "display: block" stacks them vertically instead of side by side. */
+.inputs label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #0d0d35;
 }
 
-/* The author and book lines sit quietly under the quote. */
-#author_text,
-#book_text { color: #0d0d35; }
+input {
+    padding: 0.3rem;
+    margin-left: 0.3rem;
+}
 
-/* The button you click for a fresh quote. */
 button {
     font-size: 1rem;
     padding: 0.6rem 1rem;
@@ -38,23 +38,15 @@ button {
     background-color: #0c3388;
     color: white;
     cursor: pointer;
-    margin: 0.5rem 0;
+    margin-top: 0.5rem;
 }
 
 button:hover { background-color: #034ef0; }
 
-/* The box you type the quote into. */
-#type_box {
-    width: 300px;
-    font-size: 1rem;
-    padding: 0.3rem;
-    margin: 0.5rem 0;
-}
-
-/* The live feedback line. quote.js sets its colour (green/blue/red)
-   as you type; this is just its resting style. */
-#check_message {
+/* The finished story, made big and bold so it stands out. */
+#story {
     font-size: 1.2rem;
     font-weight: bold;
     color: #2927ac;
+    margin-top: 1rem;
 }

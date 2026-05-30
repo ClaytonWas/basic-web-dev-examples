@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     index.html — The Mad Libs page (what the user sees)
+
+     HTML is the CONTENT. The colours are in index.css and the
+     story-building behaviour is in madlibs.js — both are linked here.
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mad Libs</title>
+    <link rel="stylesheet" href="index.css"> <!-- connect the stylesheet -->
+</head>
+<body>
+    <h1>Silly Story Maker</h1>
+    <p>Fill in the boxes, then click the button to see your story!</p>
+
+    <!-- Each <input> is a box to type in. The id is a name so madlibs.js
+         can read what was typed. Each <label> tells the user what to enter. -->
+    <div class="inputs">
+        <label>An adjective: <input id="adjective" placeholder="e.g. sleepy"></label>
+        <label>An animal: <input id="animal" placeholder="e.g. penguin"></label>
+        <label>A verb (action): <input id="verb" placeholder="e.g. danced"></label>
+        <label>A place: <input id="place" placeholder="e.g. the moon"></label>
+        <label>A number: <input id="number" placeholder="e.g. 7"></label>
+    </div>
+
+    <!-- Clicking this button runs makeStory() in madlibs.js. -->
+    <button id="makeStory">Make my story!</button>
+
+    <!-- The finished story gets written in here by madlibs.js. -->
+    <p id="story"></p>
+
+    <!-- Load the behaviour last, after the elements above exist. -->
+    <script src="madlibs.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-label="A cartoon sun over green hills">
+    <!-- sky -->
+    <rect width="320" height="200" fill="#bfe3ff"/>
+    <!-- sun -->
+    <circle cx="255" cy="55" r="34" fill="#f6c945"/>
+    <!-- back hill -->
+    <path d="M0 150 Q 90 95 200 140 T 320 130 V200 H0 Z" fill="#7fc36b"/>
+    <!-- front hill -->
+    <path d="M0 175 Q 120 120 240 165 T 320 160 V200 H0 Z" fill="#4fa83d"/>
+</svg>

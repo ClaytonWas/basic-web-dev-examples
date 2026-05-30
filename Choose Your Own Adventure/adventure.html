@@ -1,16 +1,64 @@
+<!DOCTYPE html>
 <!-- ============================================================
      adventure.html — The adventure game page
 
-     Notice how SHORT this is! There's only a title and an intro.
+     Notice how SHORT the body is! There's only a title and an intro.
      The rest of the game — every paragraph and button — is built
      by adventure.js, which is linked at the bottom.
+
+     The colours live in the <style> block below, in theme with the
+     rest of the class.
      ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Own Adventure</title>
+    <style>
+        /* The shared class theme: soft blue page, dark-blue headings. */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c8d4eb;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1rem;
+            color: #0d0d35;
+        }
 
-<!-- <h1> is the main heading of the page. -->
-<h1>Choose Your Own Adventure</h1>
+        h1 { color: #0c3388; }
 
-<!-- A paragraph of intro text. Everything AFTER this is added by JavaScript. -->
-<p>Welcome to the Choose Your Own Adventure game! In this game, you will make choices that will determine the outcome of your adventure.</p>
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #0d0d35;
+        }
 
-<!-- Load the behaviour. It runs startAdventure() to begin the story. -->
-<script src="adventure.js"></script>
+        /* The choice buttons the game builds — one per option, stacked. */
+        button {
+            display: block;
+            width: 100%;
+            font-size: 1rem;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: none;
+            border-radius: 1rem;
+            background-color: #0c3388;
+            color: white;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        button:hover { background-color: #034ef0; }
+    </style>
+</head>
+<body>
+    <!-- <h1> is the main heading of the page. -->
+    <h1>Choose Your Own Adventure</h1>
+
+    <!-- A paragraph of intro text. Everything AFTER this is added by JavaScript. -->
+    <p>Welcome to the Choose Your Own Adventure game! In this game, you will make choices that will determine the outcome of your adventure.</p>
+
+    <!-- Load the behaviour. It runs startAdventure() to begin the story. -->
+    <script src="adventure.js"></script>
+</body>
+</html>

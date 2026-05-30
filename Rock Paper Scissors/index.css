@@ -1,0 +1,47 @@
+/* ============================================================
+   index.css — Stylesheet for Rock Paper Scissors
+
+   A stylesheet controls how the page *looks*.
+   HTML = the content, CSS = the style.
+   This file is linked in index.html using:
+       <link rel="stylesheet" href="index.css">
+   ============================================================ */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c8d4eb;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+h1 { color: #0c3388; }
+
+/* Space out the three choice buttons. */
+.choices button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+    margin: 0.3rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #0c3388;
+    color: white;
+    cursor: pointer;
+}
+
+.choices button:hover { background-color: #034ef0; }
+
+/* The result message. */
+#result {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2927ac;
+    margin-top: 1.5rem;
+}
+
+/* The scoreboard. */
+#scoreboard {
+    font-size: 1.1rem;
+    color: #0d0d35;
+}

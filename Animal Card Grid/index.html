@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     index.html — The Animal Card Grid page (what the user sees)
+
+     HTML is the CONTENT. The colours are in index.css and the cards
+     are built by cards.js — both are linked into this file.
+
+     Notice the page is almost EMPTY below: there's just one container.
+     cards.js fills it with one card per animal, using a loop.
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Card Grid</title>
+    <link rel="stylesheet" href="index.css"> <!-- connect the stylesheet -->
+</head>
+<body>
+    <h1>Animal Card Grid</h1>
+    <p>Each card below was built by JavaScript from a list of animals.</p>
+
+    <!-- This container starts empty. cards.js adds one card per animal. -->
+    <div id="cardGrid"></div>
+
+    <!-- Load the behaviour last, after the container above exists. -->
+    <script src="cards.js"></script>
+</body>
+</html>

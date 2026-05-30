@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     index.html — The Rock Paper Scissors page (what the user sees)
+
+     HTML is the CONTENT. The colours are in index.css and the game
+     logic is in game.js — both are linked into this file.
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="index.css"> <!-- connect the stylesheet -->
+</head>
+<body>
+    <h1>Rock, Paper, Scissors</h1>
+    <p>Pick your move and play against the computer!</p>
+
+    <!-- Three choice buttons. Each id lets game.js know which was clicked. -->
+    <div class="choices">
+        <button id="rock">🪨 Rock</button>
+        <button id="paper">📄 Paper</button>
+        <button id="scissors">✂️ Scissors</button>
+    </div>
+
+    <!-- game.js writes what happened into this line. -->
+    <p id="result">Make your move!</p>
+
+    <!-- The running score. game.js updates these numbers. -->
+    <p id="scoreboard">You: 0 &nbsp; | &nbsp; Computer: 0</p>
+
+    <!-- Load the behaviour last, after the elements above exist. -->
+    <script src="game.js"></script>
+</body>
+</html>

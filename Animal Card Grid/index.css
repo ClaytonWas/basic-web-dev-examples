@@ -1,0 +1,46 @@
+/* ============================================================
+   index.css — Stylesheet for the Animal Card Grid
+
+   A stylesheet controls how the page *looks*.
+   HTML = the content, CSS = the style.
+   This file is linked in index.html using:
+       <link rel="stylesheet" href="index.css">
+   ============================================================ */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c8d4eb;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+h1 { color: #0c3388; }
+
+/*
+   FLEXBOX is a modern way to lay things out.
+   "display: flex" turns #cardGrid into a flexible row, and
+   "flex-wrap: wrap" lets the cards drop onto the next line when
+   they run out of room. "gap" adds space between them.
+*/
+#cardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Each card. flex: 1 lets cards share the row; min-width stops
+   them getting too narrow before wrapping to a new line. */
+.card {
+    flex: 1;
+    min-width: 180px;
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.card .emoji { font-size: 3rem; }    /* big emoji at the top */
+.card h2 { color: #2927ac; margin: 0.5rem 0; }
+.card p  { color: #0d0d35; margin: 0; }
