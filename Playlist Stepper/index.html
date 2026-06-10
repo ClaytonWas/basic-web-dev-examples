@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     index.html — The Playlist Stepper page (what the user sees)
+
+     HTML is the CONTENT. The colours are in index.css and the
+     stepping logic is in playlist.js — both are linked here.
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Stepper</title>
+    <link rel="stylesheet" href="index.css"> <!-- connect the stylesheet -->
+</head>
+<body>
+    <h1>Playlist Stepper</h1>
+    <p>Step through the playlist with the buttons — like the skip buttons on a music player.</p>
+
+    <!-- The "now playing" card. playlist.js fills these in. -->
+    <div class="player">
+        <p id="nowPlaying" class="title"></p>  <!-- the song title -->
+        <p id="artist"></p>                    <!-- who it's by -->
+        <p id="position"></p>                  <!-- e.g. "Song 3 of 8" -->
+    </div>
+
+    <!-- The two stepping buttons. playlist.js listens to both. -->
+    <button id="prev">⏮ Previous</button>
+    <button id="next">Next ⏭</button>
+
+    <!-- Load the behaviour last, after the elements above exist. -->
+    <script src="playlist.js"></script>
+</body>
+</html>

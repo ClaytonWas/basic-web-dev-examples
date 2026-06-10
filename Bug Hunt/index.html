@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     index.html — The Bug Hunt page (what the user sees)
+
+     This page is DELIBERATELY broken. There are FOUR features
+     below, and every single one has exactly ONE bug hiding in
+     bugs.js. The HTML and CSS are fine — don't change this file.
+
+     Your tools:
+       - The page itself (click things, watch what goes wrong)
+       - The Console (press F12) — errors and console.log live there
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Hunt</title>
+    <link rel="stylesheet" href="index.css"> <!-- connect the stylesheet -->
+</head>
+<body>
+    <h1>🐛 Bug Hunt</h1>
+    <p>Every feature on this page has exactly <strong>one bug</strong> — four bugs in total, all hiding in <strong>bugs.js</strong>. Your mission: find and fix all four. The HTML is innocent!</p>
+
+    <!-- ── HUNT 1 ── -->
+    <div class="hunt">
+        <h2>Hunt 1: The Password Gate</h2>
+        <p>Only the secret word <em>acorn</em> should unlock the door. But somehow, EVERY word works...</p>
+        <input id="passwordBox" placeholder="Guess the password">
+        <button id="passwordBtn">Try it</button>
+        <p id="passwordResult" class="result"></p>
+    </div>
+
+    <!-- ── HUNT 2 ── -->
+    <div class="hunt">
+        <h2>Hunt 2: The Launch Countdown</h2>
+        <p>This should count down 5, 4, 3, 2, 1, LIFTOFF! But the rocket never launches — and the page nearly froze before a safety brake was added...</p>
+        <button id="countdownBtn">Start countdown</button>
+        <p id="countdownResult" class="result"></p>
+    </div>
+
+    <!-- ── HUNT 3 ── -->
+    <div class="hunt">
+        <h2>Hunt 3: The Medal Ceremony</h2>
+        <p>This should announce the LAST place finisher from the results list. Instead it announces... nobody?</p>
+        <button id="medalBtn">Announce last place</button>
+        <p id="medalResult" class="result"></p>
+    </div>
+
+    <!-- ── HUNT 4 ── -->
+    <div class="hunt">
+        <h2>Hunt 4: The Tip Calculator</h2>
+        <p>This should show the bill plus a 20% tip. The maths is right there in the console — but the page just says "undefined"...</p>
+        <input id="billBox" placeholder="Bill amount, e.g. 50">
+        <button id="tipBtn">Add the tip</button>
+        <p id="tipResult" class="result"></p>
+    </div>
+
+    <!-- Load the (buggy!) behaviour last. -->
+    <script src="bugs.js"></script>
+</body>
+</html>

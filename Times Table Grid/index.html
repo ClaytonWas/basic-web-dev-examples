@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     index.html — The Times Table Grid page (what the user sees)
+
+     HTML is the CONTENT. The colours are in index.css and the
+     table is built by table.js — both are linked into this file.
+
+     Notice the body is almost EMPTY: there's just one container.
+     table.js fills it with a whole multiplication table using a
+     loop INSIDE another loop ("nested loops").
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times Table Grid</title>
+    <link rel="stylesheet" href="index.css"> <!-- connect the stylesheet -->
+</head>
+<body>
+    <h1>Times Table Grid</h1>
+    <p>This whole multiplication table was built by JavaScript with just a few lines of code — a loop inside a loop.</p>
+
+    <!-- This container starts empty. table.js builds the table inside it. -->
+    <div id="tableArea"></div>
+
+    <!-- Load the behaviour last, after the container above exists. -->
+    <script src="table.js"></script>
+</body>
+</html>

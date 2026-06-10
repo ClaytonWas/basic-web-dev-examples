@@ -1,0 +1,61 @@
+/* ============================================================
+   index.css — Stylesheet for the Playlist Stepper
+
+   A stylesheet controls how the page *looks*.
+   HTML = the content, CSS = the style.
+   This file is linked in index.html using:
+       <link rel="stylesheet" href="index.css">
+   ============================================================ */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c8d4eb;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1rem;
+    color: #0d0d35;
+    text-align: center;
+}
+
+h1 { color: #0c3388; }
+
+/* The "now playing" card. */
+.player {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* The song title — biggest thing on the card. */
+.player .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2927ac;
+    margin: 0;
+}
+
+/* The artist line under it. */
+#artist { margin: 0.4rem 0; }
+
+/* The "Song X of Y" position line. */
+#position {
+    color: #0c3388;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* The two stepping buttons. */
+button {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #0c3388;
+    color: white;
+    cursor: pointer;
+    margin: 0 0.3rem;
+}
+
+button:hover { background-color: #034ef0; }

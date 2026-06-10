@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     index.html — The Savings Goal Counter page (what the user sees)
+
+     HTML is the CONTENT. The colours are in index.css and the
+     while-loop maths lives in savings.js — both are linked here.
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Goal Counter</title>
+    <link rel="stylesheet" href="index.css"> <!-- connect the stylesheet -->
+</head>
+<body>
+    <h1>Savings Goal Counter</h1>
+    <p>Saving up for something? Enter your goal and how much you can save each week, and find out how long it will take.</p>
+
+    <!-- Each <input> is a box to type in. The id is a name so savings.js
+         can read what was typed. -->
+    <div class="inputs">
+        <label>I'm saving up for: <input id="thing" placeholder="e.g. a skateboard"></label>
+        <label>It costs ($): <input id="goal" placeholder="e.g. 120"></label>
+        <label>I can save each week ($): <input id="perWeek" placeholder="e.g. 15"></label>
+    </div>
+
+    <!-- Clicking this button runs the while loop in savings.js. -->
+    <button id="calculate">How long will it take?</button>
+
+    <!-- The answer goes here... -->
+    <p id="answer"></p>
+
+    <!-- ...and the week-by-week breakdown goes here. -->
+    <div id="log"></div>
+
+    <!-- Load the behaviour last, after the elements above exist. -->
+    <script src="savings.js"></script>
+</body>
+</html>

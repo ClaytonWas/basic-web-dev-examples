@@ -1,0 +1,48 @@
+/* ============================================================
+   index.css — Stylesheet for the Times Table Grid
+
+   A stylesheet controls how the page *looks*.
+   HTML = the content, CSS = the style.
+   This file is linked in index.html using:
+       <link rel="stylesheet" href="index.css">
+   ============================================================ */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c8d4eb;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1rem;
+    color: #0d0d35;
+}
+
+h1 { color: #0c3388; }
+
+/* The table itself — remember border-collapse from Geological Wonders? */
+table {
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 1rem;
+}
+
+/* Every cell, header or data. */
+th, td {
+    border: 1px solid #ccc;
+    padding: 0.5rem 0.7rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* The header row and header column. */
+th {
+    background: #0c3388;
+    color: white;
+}
+
+/* The perfect squares (1, 4, 9, 16...) get highlighted.
+   table.js adds class="square" to those cells with an if. */
+.square {
+    background-color: #8da8dd;
+    font-weight: bold;
+    color: #0d0d35;
+}
