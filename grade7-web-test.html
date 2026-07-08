@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     grade7-web-test.html — STUDENT COPY (interactive / submittable)
+
+     A Grade 7 unit test on the basics of HTML, CSS, and beginner
+     JavaScript, drawn from the examples in this repo (Intro to
+     HTML & CSS, Geological Wonders, Zoo Webpage, Animal Card Grid,
+     Times Table Grid). 40 points + 3 bonus, ~45 minutes.
+
+     HOW SUBMITTING WORKS
+     --------------------
+     The student fills the test on screen and clicks "Finish &
+     download my answers" at the bottom. The browser bundles every
+     answer into a plain-text file and downloads it. The student
+     then hands that file in however your class shares files
+     (shared drive, USB, Google Classroom, etc.). No email, no
+     login, and no server — this works even on GitHub Pages, which
+     only serves static files and cannot receive a submission.
+
+     NOTE: the correct answers are NOT in this file on purpose. This
+     page is public source, so anyone could read an in-page answer
+     key. Grade submissions with grade7-web-test-answer-key.html.
+
+     Print (Ctrl+P / Cmd+P) still works if you want a paper version;
+     the Finish button is hidden when printing.
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 7 Web Development Test</title>
+    <style>
+        /* The shared class theme: soft blue page, dark-blue headings. */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c8d4eb;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1rem;
+            color: #0d0d35;
+        }
+
+        h1 { color: #0c3388; margin-bottom: 0.2rem; }
+        .subtitle { font-style: italic; color: #2927ac; margin-top: 0; }
+
+        h2 {
+            color: #0c3388;
+            border-bottom: 2px solid #0c3388;
+            padding-bottom: 0.2rem;
+            margin-top: 2rem;
+        }
+
+        /* The name/date/time header row. */
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            background: #fff;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            margin: 1rem 0;
+        }
+        .meta input {
+            font: inherit;
+            border: none;
+            border-bottom: 1px solid #999;
+            background: transparent;
+        }
+
+        .instructions { font-style: italic; }
+
+        /* One question = one card. */
+        .question {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            margin: 0.8rem 0;
+            page-break-inside: avoid; /* don't split a question across printed pages */
+        }
+
+        .qtext { font-weight: bold; }
+        .pts { font-weight: normal; font-style: italic; color: #555; }
+
+        /* Multiple choice — each option is a clickable label. */
+        .choices { list-style: none; margin: 0.5rem 0 0.2rem; padding: 0; }
+        .choices li { margin: 0.35rem 0; }
+        .choices label { cursor: pointer; }
+        .choices input { margin-right: 0.5rem; }
+
+        /* Matching rows. */
+        table.match { width: 100%; border-collapse: collapse; margin: 0.5rem 0; }
+        table.match td { padding: 0.35rem 0.6rem; vertical-align: middle; }
+        table.match .term { font-family: "Courier New", monospace; font-weight: bold; width: 38%; }
+        table.match select { font: inherit; padding: 0.2rem; }
+
+        /* Text answer inputs. */
+        input.short {
+            font: inherit;
+            padding: 0.3rem 0.5rem;
+            border: 1px solid #999;
+            border-radius: 0.4rem;
+            width: 12rem;
+            max-width: 100%;
+        }
+        textarea.answer {
+            font: inherit;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #999;
+            border-radius: 0.4rem;
+            padding: 0.4rem 0.6rem;
+            resize: vertical;
+        }
+        textarea.code { font-family: "Courier New", monospace; }
+
+        /* Code blocks — monospaced, light grey, like a real editor. */
+        pre {
+            background: #f2f2f2;
+            border-left: 4px solid #8da8dd;
+            padding: 0.6rem 0.8rem;
+            font-family: "Courier New", monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            margin: 0.6rem 0;
+        }
+
+        /* The Finish button + confirmation banner. */
+        .submit-bar { text-align: center; margin: 2rem 0 1rem; }
+        button.finish {
+            font: inherit;
+            font-weight: bold;
+            color: #fff;
+            background: #0c3388;
+            border: none;
+            border-radius: 1rem;
+            padding: 0.9rem 1.6rem;
+            cursor: pointer;
+        }
+        button.finish:hover { background: #0a2a6e; }
+        .confirm {
+            display: none;
+            background: #d6f0d6;
+            border: 1px solid #4a9a4a;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            margin: 1rem 0;
+            color: #1c5c1c;
+        }
+
+        /* ── PRINT STYLES ──
+           When printing: white background, black text, each section
+           on a fresh page, and no on-screen-only controls. */
+        @media print {
+            body { background: #fff; max-width: 100%; color: #000; }
+            .question, .meta { box-shadow: none; border: 1px solid #ccc; }
+            h2 { page-break-before: always; }
+            h2:first-of-type { page-break-before: avoid; }
+            .submit-bar, .confirm { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Development Test</h1>
+    <p class="subtitle">Grade 7 — HTML, CSS, and Beginner JavaScript</p>
+
+    <form id="test">
+    <div class="meta">
+        <span>Name: <input class="short" id="studentName" style="width:11rem" autocomplete="off"></span>
+        <span>Date: <input class="short" id="studentDate" style="width:7rem" autocomplete="off"></span>
+        <span>Time: 45 minutes</span>
+        <span><strong>Total: 40 points (+3 bonus)</strong></span>
+    </div>
+
+    <p class="instructions">Type your answers in the boxes. When you are done, click <strong>Finish &amp; download my answers</strong> at the bottom and hand in the file that downloads. Take your time — a partly right answer can still earn marks. It is okay if you do not finish the bonus.</p>
+
+    <!-- ════════════ SECTION A ════════════ -->
+    <h2>Section A: HTML Basics (8 points)</h2>
+    <p class="instructions">Choose the best answer. 1 point each.</p>
+
+    <div class="question">
+        <p class="qtext">A1. What does HTML do on a web page?</p>
+        <ul class="choices" data-q="A1">
+            <li><label><input type="radio" name="A1" value="a"> It makes the page colourful and pretty</label></li>
+            <li><label><input type="radio" name="A1" value="b"> It holds the content — the words, headings, lists, and pictures</label></li>
+            <li><label><input type="radio" name="A1" value="c"> It makes buttons do something when you click them</label></li>
+            <li><label><input type="radio" name="A1" value="d"> It connects the page to the internet</label></li>
+        </ul>
+    </div>
+
+    <div class="question">
+        <p class="qtext">A2. Which tag makes the biggest heading on a page?</p>
+        <ul class="choices" data-q="A2">
+            <li><label><input type="radio" name="A2" value="a"> &lt;p&gt;</label></li>
+            <li><label><input type="radio" name="A2" value="b"> &lt;h6&gt;</label></li>
+            <li><label><input type="radio" name="A2" value="c"> &lt;h1&gt;</label></li>
+            <li><label><input type="radio" name="A2" value="d"> &lt;big&gt;</label></li>
+        </ul>
+    </div>
+
+    <div class="question">
+        <p class="qtext">A3. Which tag creates a bullet-point list?</p>
+        <ul class="choices" data-q="A3">
+            <li><label><input type="radio" name="A3" value="a"> &lt;ul&gt;</label></li>
+            <li><label><input type="radio" name="A3" value="b"> &lt;li&gt;</label></li>
+            <li><label><input type="radio" name="A3" value="c"> &lt;list&gt;</label></li>
+            <li><label><input type="radio" name="A3" value="d"> &lt;p&gt;</label></li>
+        </ul>
+    </div>
+
+    <div class="question">
+        <p class="qtext">A4. What is the <code>alt</code> in <code>&lt;img src="cat.jpg" alt="A sleeping cat"&gt;</code> for?</p>
+        <ul class="choices" data-q="A4">
+            <li><label><input type="radio" name="A4" value="a"> It is the file name of the picture</label></li>
+            <li><label><input type="radio" name="A4" value="b"> It describes the picture in words (for example, if it fails to load)</label></li>
+            <li><label><input type="radio" name="A4" value="c"> It sets how big the picture is</label></li>
+            <li><label><input type="radio" name="A4" value="d"> It is just a comment that does nothing</label></li>
+        </ul>
+    </div>
+
+    <div class="question">
+        <p class="qtext">A5. In a table, what is the difference between <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code>?</p>
+        <ul class="choices" data-q="A5">
+            <li><label><input type="radio" name="A5" value="a"> &lt;th&gt; is a header cell (a label); &lt;td&gt; holds the actual data</label></li>
+            <li><label><input type="radio" name="A5" value="b"> &lt;th&gt; is a row; &lt;td&gt; is a column</label></li>
+            <li><label><input type="radio" name="A5" value="c"> They are exactly the same</label></li>
+            <li><label><input type="radio" name="A5" value="d"> &lt;th&gt; is for text; &lt;td&gt; is for numbers</label></li>
+        </ul>
+    </div>
+
+    <div class="question">
+        <p class="qtext">A6. Which tag makes one row of a table?</p>
+        <ul class="choices" data-q="A6">
+            <li><label><input type="radio" name="A6" value="a"> &lt;table&gt;</label></li>
+            <li><label><input type="radio" name="A6" value="b"> &lt;row&gt;</label></li>
+            <li><label><input type="radio" name="A6" value="c"> &lt;tr&gt;</label></li>
+            <li><label><input type="radio" name="A6" value="d"> &lt;td&gt;</label></li>
+        </ul>
+    </div>
+
+    <div class="question">
+        <p class="qtext">A7. True or False: every tag you open, like <code>&lt;p&gt;</code>, should also be closed, like <code>&lt;/p&gt;</code>.</p>
+        <ul class="choices" data-q="A7">
+            <li><label><input type="radio" name="A7" value="a"> True</label></li>
+            <li><label><input type="radio" name="A7" value="b"> False</label></li>
+        </ul>
+    </div>
+
+    <div class="question">
+        <p class="qtext">A8. Which part of the page holds the title that shows on the browser tab?</p>
+        <ul class="choices" data-q="A8">
+            <li><label><input type="radio" name="A8" value="a"> the &lt;body&gt;</label></li>
+            <li><label><input type="radio" name="A8" value="b"> the &lt;head&gt;</label></li>
+            <li><label><input type="radio" name="A8" value="c"> the &lt;h1&gt;</label></li>
+            <li><label><input type="radio" name="A8" value="d"> the &lt;footer&gt;</label></li>
+        </ul>
+    </div>
+
+    <!-- ════════════ SECTION B ════════════ -->
+    <h2>Section B: CSS &amp; Structure (10 points)</h2>
+
+    <div class="question">
+        <p class="qtext">B1. What is the job of CSS? <span class="pts">(2 pts)</span></p>
+        <textarea class="answer" name="B1" rows="2"></textarea>
+    </div>
+
+    <div class="question">
+        <p class="qtext">B2. Match each CSS piece to what it means. Pick the correct letter for each one. <span class="pts">(4 pts)</span></p>
+        <table class="match">
+            <tr>
+                <td class="term">background-color</td>
+                <td><select name="B2_background"><option value=""></option><option>a</option><option>b</option><option>c</option><option>d</option></select></td>
+                <td>a) the space inside an element, around its content</td>
+            </tr>
+            <tr>
+                <td class="term">h1 { }</td>
+                <td><select name="B2_h1"><option value=""></option><option>a</option><option>b</option><option>c</option><option>d</option></select></td>
+                <td>b) sets the colour behind an element</td>
+            </tr>
+            <tr>
+                <td class="term">padding</td>
+                <td><select name="B2_padding"><option value=""></option><option>a</option><option>b</option><option>c</option><option>d</option></select></td>
+                <td>c) targets every &lt;h1&gt; on the page</td>
+            </tr>
+            <tr>
+                <td class="term">.wonder-title</td>
+                <td><select name="B2_class"><option value=""></option><option>a</option><option>b</option><option>c</option><option>d</option></select></td>
+                <td>d) targets only elements with class="wonder-title"</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <p class="qtext">B3. This line goes in the <code>&lt;head&gt;</code> to connect a stylesheet. Fill in the blank. <span class="pts">(2 pts)</span></p>
+<pre>&lt;link rel="stylesheet" ________="index.css"&gt;</pre>
+        <p>The missing word is: <input class="short" name="B3" autocomplete="off"></p>
+    </div>
+
+    <div class="question">
+        <p class="qtext">B4. In the rule below, name the two parts pointed to by the arrows. <span class="pts">(2 pts)</span></p>
+<pre>body { background-color: lightblue; }
+ ↑              ↑
+(1)            (2)</pre>
+        <p>(1) is called the <input class="short" name="B4_1" autocomplete="off"></p>
+        <p>(2) is called the <input class="short" name="B4_2" autocomplete="off"></p>
+    </div>
+
+    <!-- ════════════ SECTION C ════════════ -->
+    <h2>Section C: Read the JavaScript (14 points)</h2>
+    <p class="instructions">Write EXACTLY what each program prints, in order. One line of output per console.log.</p>
+
+    <div class="question">
+        <p class="qtext">C1. <span class="pts">(2 pts)</span></p>
+<pre>let score = 8;
+score = score + 2;
+console.log(score);</pre>
+        <textarea class="answer code" name="C1" rows="1"></textarea>
+    </div>
+
+    <div class="question">
+        <p class="qtext">C2. <span class="pts">(2 pts)</span></p>
+<pre>let animals = ["lemur", "orangutan", "snake"];
+console.log(animals[0]);
+console.log(animals.length);</pre>
+        <textarea class="answer code" name="C2" rows="2"></textarea>
+    </div>
+
+    <div class="question">
+        <p class="qtext">C3. <span class="pts">(3 pts)</span></p>
+<pre>for (let i = 1; i <= 5; i++) {
+  console.log(i);
+}</pre>
+        <textarea class="answer code" name="C3" rows="5"></textarea>
+    </div>
+
+    <div class="question">
+        <p class="qtext">C4. <span class="pts">(3 pts)</span></p>
+<pre>let total = 0;
+for (let i = 1; i <= 3; i++) {
+  total = total + i;
+}
+console.log(total);</pre>
+        <textarea class="answer code" name="C4" rows="1"></textarea>
+    </div>
+
+    <div class="question">
+        <p class="qtext">C5. <span class="pts">(2 pts)</span></p>
+<pre>let age = 11;
+if (age >= 13) {
+  console.log("teen");
+} else {
+  console.log("kid");
+}</pre>
+        <textarea class="answer code" name="C5" rows="1"></textarea>
+    </div>
+
+    <div class="question">
+        <p class="qtext">C6. <span class="pts">(2 pts)</span> In the Zoo Webpage, a fact is chosen like this. Why does the code use <code>Math.floor</code>?</p>
+<pre>let i = Math.floor(Math.random() * facts.length);</pre>
+        <textarea class="answer" name="C6" rows="2"></textarea>
+    </div>
+
+    <!-- ════════════ SECTION D ════════════ -->
+    <h2>Section D: Fix &amp; Write (8 points + bonus)</h2>
+
+    <div class="question">
+        <p class="qtext">D1. Each row of this table should have the same number of cells, but one row is broken so the table looks crooked. Which row is wrong, and how do you fix it? <span class="pts">(3 pts)</span></p>
+<pre>&lt;table&gt;
+  &lt;tr&gt; &lt;th&gt;Animal&lt;/th&gt; &lt;th&gt;Home&lt;/th&gt; &lt;/tr&gt;
+  &lt;tr&gt; &lt;td&gt;Penguin&lt;/td&gt; &lt;/tr&gt;
+&lt;/table&gt;</pre>
+        <textarea class="answer" name="D1" rows="3"></textarea>
+    </div>
+
+    <div class="question">
+        <p class="qtext">D2. Write the HTML for a heading that says <strong>My Favourite Animals</strong> followed by a bullet list of any three animals. <span class="pts">(5 pts)</span></p>
+        <textarea class="answer code" name="D2" rows="6"></textarea>
+    </div>
+
+    <div class="question">
+        <p class="qtext">BONUS. Write a loop that prints the numbers 1 to 10, one per line. <span class="pts">(3 pts)</span></p>
+        <textarea class="answer code" name="BONUS" rows="4"></textarea>
+    </div>
+
+    <div class="submit-bar">
+        <button type="button" class="finish" onclick="finishTest()">Finish &amp; download my answers</button>
+    </div>
+
+    <div class="confirm" id="confirm">
+        ✅ <strong>Done!</strong> Your answers file has downloaded. Hand it in the way your teacher asked (shared folder, USB, or class page). You can close this page now.
+    </div>
+    </form>
+
+    <script>
+        // Every question in the order it should appear in the file.
+        // "mc" = multiple choice (radio), "text" = a written answer.
+        var QUESTIONS = [
+            { section: "Section A: HTML Basics" },
+            { name: "A1", type: "mc" }, { name: "A2", type: "mc" },
+            { name: "A3", type: "mc" }, { name: "A4", type: "mc" },
+            { name: "A5", type: "mc" }, { name: "A6", type: "mc" },
+            { name: "A7", type: "mc" }, { name: "A8", type: "mc" },
+            { section: "Section B: CSS & Structure" },
+            { name: "B1", type: "text" },
+            { name: "B2_background", type: "text", label: "B2 background-color" },
+            { name: "B2_h1", type: "text", label: "B2 h1 { }" },
+            { name: "B2_padding", type: "text", label: "B2 padding" },
+            { name: "B2_class", type: "text", label: "B2 .wonder-title" },
+            { name: "B3", type: "text" },
+            { name: "B4_1", type: "text", label: "B4 (1)" },
+            { name: "B4_2", type: "text", label: "B4 (2)" },
+            { section: "Section C: Read the JavaScript" },
+            { name: "C1", type: "text" }, { name: "C2", type: "text" },
+            { name: "C3", type: "text" }, { name: "C4", type: "text" },
+            { name: "C5", type: "text" }, { name: "C6", type: "text" },
+            { section: "Section D: Fix & Write" },
+            { name: "D1", type: "text" }, { name: "D2", type: "text" },
+            { name: "BONUS", type: "text" }
+        ];
+
+        function finishTest() {
+            var form = document.getElementById("test");
+            var name = document.getElementById("studentName").value.trim() || "Unnamed";
+            var date = document.getElementById("studentDate").value.trim();
+
+            var out = [];
+            out.push("Grade 7 Web Development Test — Submission");
+            out.push("Name: " + name);
+            out.push("Date: " + date);
+            out.push("Submitted: " + new Date().toLocaleString());
+            out.push("========================================");
+
+            QUESTIONS.forEach(function (q) {
+                if (q.section) {
+                    out.push("");
+                    out.push("--- " + q.section + " ---");
+                    return;
+                }
+                var field = form.elements[q.name];
+                var value = field ? (field.value || "") : "";
+                var label = q.label || q.name;
+                if (q.type === "text" && value.indexOf("\n") !== -1) {
+                    // Multi-line answers get their own indented block.
+                    out.push(label + ":");
+                    value.split("\n").forEach(function (line) { out.push("    " + line); });
+                } else {
+                    out.push(label + ": " + (value === "" ? "(blank)" : value));
+                }
+            });
+
+            var blob = new Blob([out.join("\n")], { type: "text/plain" });
+            var safeName = name.replace(/[^a-z0-9]+/gi, "_").replace(/^_+|_+$/g, "") || "student";
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "web-test_" + safeName + ".txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
+
+            document.getElementById("confirm").style.display = "block";
+            document.getElementById("confirm").scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>
