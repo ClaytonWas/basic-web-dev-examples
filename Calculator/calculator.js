@@ -9,10 +9,10 @@
 // ============================================================
 
 
-// document.getElementById("calculate") finds the "=" button in the HTML.
-// .addEventListener("click", ...) means: "when that button is clicked,
-// run the function below." The function is the recipe for one calculation.
-document.getElementById("calculate").addEventListener("click", function() {
+// This function is the recipe for one calculation.
+// Giving it a name (calculate) means we can refer to it later when we
+// decide WHEN to run it. On its own, it just sits here waiting to be used.
+function calculate() {
 
     // Read what the user typed. .value is always TEXT (a string),
     // so parseFloat() turns text like "12.5" into a real number we can do maths with.
@@ -60,7 +60,15 @@ document.getElementById("calculate").addEventListener("click", function() {
 
     // Show the answer by putting it inside the <p id="result"> element.
     document.getElementById("result").textContent = result;
-});
+}
+
+
+// Now we connect the function to the button.
+// document.getElementById("calculate") finds the "=" button in the HTML.
+// .addEventListener("click", calculate) means: "when that button is clicked,
+// run the calculate function above." Note we write calculate WITHOUT (),
+// because we're handing over the function to be called later, not calling it now.
+document.getElementById("calculate").addEventListener("click", calculate);
 
 
 // ============================================================
