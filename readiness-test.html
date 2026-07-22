@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <!-- ============================================================
-     readiness-test.html — STUDENT COPY
+     readiness-test.html — STUDENT COPY (interactive)
 
      The Programming Readiness Test, for students moving from
      Scratch + HTML/JS to Python. 46 points + 3 bonus, ~45 minutes.
 
-     Print it (Ctrl+P / Cmd+P) — the print styles below give clean
-     black-and-white pages with sensible page breaks — or have the
-     student answer on paper while reading from the screen.
+     Students answer directly in the browser: multiple-choice
+     questions are radio buttons, everything else is a textarea.
+     The "Download my answers" button saves their responses to a
+     plain-text file they can send back to you.
+
+     It still prints cleanly (Ctrl+P / Cmd+P) if you prefer paper.
 
      The answers are in answer-key.html. Don't open that one in
      front of the student!
@@ -43,11 +46,19 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            align-items: center;
             gap: 0.5rem;
             background: #fff;
             border-radius: 1rem;
             padding: 0.8rem 1rem;
             margin: 1rem 0;
+        }
+        .meta label { display: flex; align-items: center; gap: 0.4rem; }
+        .meta input {
+            font: inherit;
+            border: 1px solid #8da8dd;
+            border-radius: 0.4rem;
+            padding: 0.3rem 0.5rem;
         }
 
         .instructions { font-style: italic; }
@@ -64,12 +75,18 @@
         .qtext { font-weight: bold; }
         .pts { font-weight: normal; font-style: italic; color: #555; }
 
-        /* Multiple choice options. */
+        /* Multiple choice options — each is a clickable radio button. */
         ol.choices {
             list-style-type: lower-alpha;
             margin: 0.5rem 0 0.2rem;
         }
         ol.choices li { margin: 0.2rem 0; }
+        ol.choices label {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
 
         /* Code blocks — monospaced, light grey, like a real editor. */
         pre {
@@ -82,11 +99,39 @@
             margin: 0.6rem 0;
         }
 
-        /* Ruled lines for the student to write answers on. */
-        .answer-lines div {
-            border-bottom: 1px solid #999;
-            height: 1.8rem;
+        /* Where the student types written answers. */
+        textarea.answer {
+            width: 100%;
+            box-sizing: border-box;
+            font: inherit;
+            border: 1px solid #8da8dd;
+            border-radius: 0.4rem;
+            padding: 0.5rem;
+            resize: vertical;
+            margin-top: 0.4rem;
         }
+        textarea.code { font-family: "Courier New", monospace; }
+
+        /* The download bar, pinned to the bottom of the page flow. */
+        .actions {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .actions button {
+            font: inherit;
+            font-weight: bold;
+            color: #fff;
+            background: #0c3388;
+            border: none;
+            border-radius: 0.6rem;
+            padding: 0.7rem 1.4rem;
+            cursor: pointer;
+        }
+        .actions button:hover { background: #0a2a6f; }
+        .actions p { margin: 0.6rem 0 0; font-size: 0.9rem; color: #555; }
 
         /* ── PRINT STYLES ──
            When printing: white background, black text, and each
@@ -96,6 +141,8 @@
             .question, .meta { box-shadow: none; border: 1px solid #ccc; }
             h2 { page-break-before: always; }
             h2:first-of-type { page-break-before: avoid; }
+            .actions { display: none; }
+            textarea.answer { border: 1px solid #999; }
         }
     </style>
 </head>
@@ -103,26 +150,27 @@
     <h1>Programming Readiness Test</h1>
     <p class="subtitle">Moving from Scratch and JavaScript to Python</p>
 
+    <form id="test">
     <div class="meta">
-        <span>Name: ______________________</span>
-        <span>Date: ____________</span>
+        <label>Name: <input type="text" id="student-name" name="name" autocomplete="name"></label>
+        <label>Date: <input type="date" id="student-date" name="date"></label>
         <span>Time: 45 minutes</span>
         <span><strong>Total: 46 points (+3 bonus)</strong></span>
     </div>
 
-    <p class="instructions">All code in this test is JavaScript, which you already know. Read carefully, take your time, and show your thinking. It is okay if you do not finish the bonus question.</p>
+    <p class="instructions">All code in this test is JavaScript, which you already know. Read carefully, take your time, and show your thinking. It is okay if you do not finish the bonus question. When you are done, click <strong>Download my answers</strong> at the bottom and send the file to your teacher.</p>
 
     <!-- ════════════ SECTION A ════════════ -->
     <h2>Section A: Quick Concepts (8 points)</h2>
-    <p class="instructions">Circle the best answer. 1 point each.</p>
+    <p class="instructions">Choose the best answer. 1 point each.</p>
 
     <div class="question">
         <p class="qtext">A1. What does a variable do in a program?</p>
         <ol class="choices">
-            <li>It stores a value so you can use it later</li>
-            <li>It prints text to the screen</li>
-            <li>It makes the program loop forever</li>
-            <li>It changes the colour of a webpage</li>
+            <li><label><input type="radio" name="a1"> It stores a value so you can use it later</label></li>
+            <li><label><input type="radio" name="a1"> It prints text to the screen</label></li>
+            <li><label><input type="radio" name="a1"> It makes the program loop forever</label></li>
+            <li><label><input type="radio" name="a1"> It changes the colour of a webpage</label></li>
         </ol>
     </div>
 
@@ -131,68 +179,68 @@
 <pre>let score = 10;
 score = score + 5;</pre>
         <ol class="choices">
-            <li>10</li>
-            <li>5</li>
-            <li>15</li>
-            <li>105</li>
+            <li><label><input type="radio" name="a2"> 10</label></li>
+            <li><label><input type="radio" name="a2"> 5</label></li>
+            <li><label><input type="radio" name="a2"> 15</label></li>
+            <li><label><input type="radio" name="a2"> 105</label></li>
         </ol>
     </div>
 
     <div class="question">
         <p class="qtext">A3. In JavaScript, which symbol CHECKS if two values are equal?</p>
         <ol class="choices">
-            <li>=</li>
-            <li>==</li>
-            <li>=&gt;</li>
-            <li>!=</li>
+            <li><label><input type="radio" name="a3"> =</label></li>
+            <li><label><input type="radio" name="a3"> ==</label></li>
+            <li><label><input type="radio" name="a3"> =&gt;</label></li>
+            <li><label><input type="radio" name="a3"> !=</label></li>
         </ol>
     </div>
 
     <div class="question">
         <p class="qtext">A4. What is the position (index) of the FIRST item in an array?</p>
         <ol class="choices">
-            <li>1</li>
-            <li>0</li>
-            <li>-1</li>
-            <li>It depends on the array</li>
+            <li><label><input type="radio" name="a4"> 1</label></li>
+            <li><label><input type="radio" name="a4"> 0</label></li>
+            <li><label><input type="radio" name="a4"> -1</label></li>
+            <li><label><input type="radio" name="a4"> It depends on the array</label></li>
         </ol>
     </div>
 
     <div class="question">
         <p class="qtext">A5. True or False: a <code>while</code> loop always repeats an exact number of times that you choose in advance.</p>
         <ol class="choices">
-            <li>True</li>
-            <li>False</li>
+            <li><label><input type="radio" name="a5"> True</label></li>
+            <li><label><input type="radio" name="a5"> False</label></li>
         </ol>
     </div>
 
     <div class="question">
         <p class="qtext">A6. In Scratch, the &ldquo;repeat 10&rdquo; block is most like which JavaScript idea?</p>
         <ol class="choices">
-            <li>an if statement</li>
-            <li>a for loop</li>
-            <li>a function</li>
-            <li>a variable</li>
+            <li><label><input type="radio" name="a6"> an if statement</label></li>
+            <li><label><input type="radio" name="a6"> a for loop</label></li>
+            <li><label><input type="radio" name="a6"> a function</label></li>
+            <li><label><input type="radio" name="a6"> a variable</label></li>
         </ol>
     </div>
 
     <div class="question">
         <p class="qtext">A7. What does <code>return</code> do inside a function?</p>
         <ol class="choices">
-            <li>It prints a value to the screen</li>
-            <li>It sends a value back to wherever the function was called</li>
-            <li>It ends the whole program</li>
-            <li>It restarts the function</li>
+            <li><label><input type="radio" name="a7"> It prints a value to the screen</label></li>
+            <li><label><input type="radio" name="a7"> It sends a value back to wherever the function was called</label></li>
+            <li><label><input type="radio" name="a7"> It ends the whole program</label></li>
+            <li><label><input type="radio" name="a7"> It restarts the function</label></li>
         </ol>
     </div>
 
     <div class="question">
         <p class="qtext">A8. In JavaScript, what does <code>"5" + 5</code> give you?</p>
         <ol class="choices">
-            <li>10</li>
-            <li>"55"</li>
-            <li>an error</li>
-            <li>5</li>
+            <li><label><input type="radio" name="a8"> 10</label></li>
+            <li><label><input type="radio" name="a8"> "55"</label></li>
+            <li><label><input type="radio" name="a8"> an error</label></li>
+            <li><label><input type="radio" name="a8"> 5</label></li>
         </ol>
     </div>
 
@@ -207,7 +255,7 @@ let y = x * 2;
 x = x + 1;
 console.log(x);
 console.log(y);</pre>
-        <div class="answer-lines"><div></div><div></div></div>
+        <textarea class="answer code" name="B1" rows="2" placeholder="Type the output here..."></textarea>
     </div>
 
     <div class="question">
@@ -218,7 +266,7 @@ if (age >= 13) {
 } else {
   console.log("kid");
 }</pre>
-        <div class="answer-lines"><div></div></div>
+        <textarea class="answer code" name="B2" rows="2" placeholder="Type the output here..."></textarea>
     </div>
 
     <div class="question">
@@ -228,7 +276,7 @@ for (let i = 1; i <= 4; i++) {
   total = total + i;
 }
 console.log(total);</pre>
-        <div class="answer-lines"><div></div></div>
+        <textarea class="answer code" name="B3" rows="2" placeholder="Type the output here..."></textarea>
     </div>
 
     <div class="question">
@@ -239,7 +287,7 @@ while (count < 3) {
   count = count + 1;
 }
 console.log(count);</pre>
-        <div class="answer-lines"><div></div><div></div></div>
+        <textarea class="answer code" name="B4" rows="4" placeholder="Type the output here..."></textarea>
     </div>
 
     <div class="question">
@@ -247,7 +295,7 @@ console.log(count);</pre>
 <pre>let animals = ["cat", "dog", "bird"];
 console.log(animals[1]);
 console.log(animals.length);</pre>
-        <div class="answer-lines"><div></div><div></div></div>
+        <textarea class="answer code" name="B5" rows="2" placeholder="Type the output here..."></textarea>
     </div>
 
     <div class="question">
@@ -257,7 +305,7 @@ console.log(animals.length);</pre>
     console.log(i + "-" + j);
   }
 }</pre>
-        <div class="answer-lines"><div></div><div></div><div></div></div>
+        <textarea class="answer code" name="B6" rows="6" placeholder="Type the output here..."></textarea>
     </div>
 
     <div class="question">
@@ -267,7 +315,7 @@ console.log(animals.length);</pre>
 }
 let result = double(3) + double(5);
 console.log(result);</pre>
-        <div class="answer-lines"><div></div></div>
+        <textarea class="answer code" name="B7" rows="2" placeholder="Type the output here..."></textarea>
     </div>
 
     <!-- ════════════ SECTION C ════════════ -->
@@ -280,7 +328,7 @@ console.log(result);</pre>
 if (password = "dragon") {
   console.log("Welcome!");
 }</pre>
-        <div class="answer-lines"><div></div><div></div></div>
+        <textarea class="answer" name="C1" rows="3" placeholder="What is wrong, and how would you fix it?"></textarea>
     </div>
 
     <div class="question">
@@ -289,14 +337,14 @@ if (password = "dragon") {
 while (lives > 0) {
   console.log("Playing...");
 }</pre>
-        <div class="answer-lines"><div></div><div></div></div>
+        <textarea class="answer" name="C2" rows="3" placeholder="What is wrong, and how would you fix it?"></textarea>
     </div>
 
     <div class="question">
         <p class="qtext">C3. This should print the LAST colour in the list, but it prints undefined.</p>
 <pre>let colors = ["red", "green", "blue"];
 console.log(colors[3]);</pre>
-        <div class="answer-lines"><div></div><div></div></div>
+        <textarea class="answer" name="C3" rows="3" placeholder="What is wrong, and how would you fix it?"></textarea>
     </div>
 
     <!-- ════════════ SECTION D ════════════ -->
@@ -305,18 +353,105 @@ console.log(colors[3]);</pre>
 
     <div class="question">
         <p class="qtext">D1. Write a loop that prints the numbers 1 to 10, one per line. <span class="pts">(4 pts)</span></p>
-        <div class="answer-lines"><div></div><div></div><div></div><div></div></div>
+        <textarea class="answer code" name="D1" rows="5" placeholder="Write your code here..."></textarea>
     </div>
 
     <div class="question">
         <p class="qtext">D2. Write a function called <code>greet</code> that takes a name and RETURNS (not prints) the text &ldquo;Hello, NAME!&rdquo;. For example, <code>greet("Sam")</code> should return &ldquo;Hello, Sam!&rdquo;. <span class="pts">(5 pts)</span></p>
-        <div class="answer-lines"><div></div><div></div><div></div><div></div></div>
+        <textarea class="answer code" name="D2" rows="5" placeholder="Write your code here..."></textarea>
     </div>
 
     <div class="question">
         <p class="qtext">BONUS. Write a function called <code>isEven</code> that takes a number and returns <code>true</code> if it is even and <code>false</code> if it is odd. Hint: <code>n % 2</code> gives the remainder when n is divided by 2. <span class="pts">(3 pts)</span></p>
-        <div class="answer-lines"><div></div><div></div><div></div><div></div></div>
+        <textarea class="answer code" name="BONUS" rows="5" placeholder="Write your code here..."></textarea>
     </div>
 
+    <div class="actions">
+        <button type="button" id="download-btn">Download my answers</button>
+        <p>Saves a text file you can email or hand in to your teacher.</p>
+    </div>
+    </form>
+
+    <script>
+        // Turn each option's list position into a letter: 0 -> a, 1 -> b, ...
+        function letterFor(index) {
+            return String.fromCharCode(97 + index);
+        }
+
+        // Walk the whole test and build a plain-text transcript of the answers.
+        function collectAnswers() {
+            const name = document.getElementById('student-name').value.trim();
+            const date = document.getElementById('student-date').value.trim();
+
+            const lines = [];
+            lines.push('Programming Readiness Test — Answers');
+            lines.push('Name: ' + (name || '(no name given)'));
+            lines.push('Date: ' + (date || '(no date given)'));
+            lines.push('='.repeat(40));
+            lines.push('');
+
+            let currentSection = '';
+            document.querySelectorAll('h2, .question').forEach(el => {
+                if (el.tagName === 'H2') {
+                    currentSection = el.textContent.trim();
+                    lines.push('');
+                    lines.push(currentSection);
+                    lines.push('-'.repeat(currentSection.length));
+                    return;
+                }
+
+                // It's a .question card.
+                const qtext = el.querySelector('.qtext').textContent.trim();
+                lines.push(qtext);
+
+                // Multiple choice: report the chosen letter and its text.
+                const choices = el.querySelectorAll('ol.choices li');
+                if (choices.length) {
+                    let picked = null;
+                    choices.forEach((li, i) => {
+                        const radio = li.querySelector('input[type=radio]');
+                        if (radio && radio.checked) {
+                            picked = letterFor(i) + ') ' + li.textContent.trim();
+                        }
+                    });
+                    lines.push('  Answer: ' + (picked || '(no answer)'));
+                }
+
+                // Written answers: reproduce the typed text, indented.
+                el.querySelectorAll('textarea').forEach(ta => {
+                    const val = ta.value.replace(/\r\n/g, '\n').trim();
+                    if (val) {
+                        val.split('\n').forEach(row => lines.push('  ' + row));
+                    } else {
+                        lines.push('  (no answer)');
+                    }
+                });
+
+                lines.push('');
+            });
+
+            return { text: lines.join('\n'), name: name };
+        }
+
+        // Build a safe filename slug from the student's name.
+        function slugify(name) {
+            const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            return slug || 'student';
+        }
+
+        document.getElementById('download-btn').addEventListener('click', function () {
+            const { text, name } = collectAnswers();
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'readiness-test-' + slugify(name) + '.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    </script>
 </body>
 </html>
