@@ -1,0 +1,7 @@
+# Answer keys must NEVER be published.
+# This repo is public and GitHub Pages serves it at
+# https://claytonwas.github.io/basic-web-dev-examples/ , so any file
+# committed here is readable by anyone who guesses its URL. Keep
+# answer keys as local files on your own computer and grade from them
+# there. If you want them backed up online, put them in a PRIVATE repo.
+*answer-key*.html
